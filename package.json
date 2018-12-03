@@ -6,14 +6,13 @@
     "lib": "lib"
   },
   "scripts": {
-    "getName": "echo \"$npm_package_name\""
-    ,"pretest":"bash ./bin/setup"
-    ,"test": "bash ./bin/test"
-    ,"posttest":"bash ./bin/clean"
-    ,"preinstall": "bash ./bin/preinstall"
-    ,"postinstall": "bash ./bin/postinstall"
-    ,"setup":"bash ./bin/setup"
-    ,"clean":"bash ./bin/clean"
+    "pretest": "bash ./bin/setup",
+    "test": "bash ./bin/test",
+    "posttest": "bash ./bin/clean",
+    "preinstall": "bash ./bin/preinstall",
+    "postinstall": "bash ./bin/postinstall",
+    "setup": "bash ./bin/setup",
+    "clean": "bash ./bin/clean"
   },
   "repository": {
     "type": "git",
