@@ -6,3 +6,11 @@
 salesforce.schema
 
 build.properties
+
+.vscode
+
+.sfdx
+
+test_results
+
+node_modules

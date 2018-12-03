@@ -6,8 +6,14 @@
     "lib": "lib"
   },
   "scripts": {
-    "test": "bash ./bin/test",
-    "install": "bash ./bin/install"
+    "getName": "echo \"$npm_package_name\""
+    ,"pretest":"bash ./bin/setup"
+    ,"test": "bash ./bin/test"
+    ,"posttest":"bash ./bin/clean"
+    ,"preinstall": "bash ./bin/preinstall"
+    ,"postinstall": "bash ./bin/postinstall"
+    ,"setup":"bash ./bin/setup"
+    ,"clean":"bash ./bin/clean"
   },
   "repository": {
     "type": "git",
@@ -16,7 +22,7 @@
   "keywords": [
     "apex"
   ],
-  "author": "other people",
+  "author": "Andrew Fawcett",
   "bugs": {
     "url": "https://github.com/gussamer/fflib-apex-mocks/issues"
   },

@@ -1,0 +1,6 @@
+#!/usr/bin/bash
+pname="$(./bin/pname)"
+bin/scratch
+export setup_package="$pname"
+npm install
+export setup_package=""

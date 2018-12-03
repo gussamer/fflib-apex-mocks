@@ -1,0 +1,3 @@
+#!/usr/bin/bash
+pname="$(./bin/pname)"
+sfdx force:org:delete -u "$pname" -p
