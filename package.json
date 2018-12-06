@@ -2,9 +2,6 @@
   "name": "fflib-apex-mocks",
   "version": "1.0.0",
   "description": "fflib apex mocks",
-  "directories": {
-    "lib": "lib"
-  },
   "scripts": {
     "pretest": "bash ./bin/setup",
     "test": "bash ./bin/test",
