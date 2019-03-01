@@ -14,3 +14,7 @@ build.properties
 test_results
 
 node_modules
+
+*.prefs
+
+fflib/salesforce.schema
