@@ -7,14 +7,10 @@ salesforce.schema
 
 build.properties
 
-.vscode
-
 .sfdx
 
-test_results
+.vscode
 
 node_modules
 
-*.prefs
-
-fflib/salesforce.schema
+test_results

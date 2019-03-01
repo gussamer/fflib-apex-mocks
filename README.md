@@ -1,62 +1,110 @@
-FinancialForce Apex Common
-==========================
+# FinancialForce ApexMocks Framework
 
-[![Build Status](https://travis-ci.org/financialforcedev/fflib-apex-common.svg)](https://travis-ci.org/financialforcedev/fflib-apex-common) 
+[![Build Status](https://travis-ci.org/financialforcedev/fflib-apex-mocks.svg)](https://travis-ci.org/financialforcedev/fflib-apex-mocks)
 
-**Dependencies:** Must deploy [ApexMocks](https://github.com/financialforcedev/fflib-apex-mocks) before deploying this library
+ApexMocks is a mocking framework for the Force.com Apex language. 
 
-<a href="https://githubsfdeploy.herokuapp.com?owner=financialforcedev&repo=fflib-apex-common">
+It derives it's inspiration from the well known Java mocking framework [Mockito](https://code.google.com/p/mockito/)
+
+<a href="https://githubsfdeploy.herokuapp.com?owner=financialforcedev&repo=fflib-apex-mocks">
   <img alt="Deploy to Salesforce"
        src="https://raw.githubusercontent.com/afawcett/githubsfdeploy/master/src/main/webapp/resources/img/deploy.png">
 </a>
 
-See here for [MavensMate Templates](http://andyinthecloud.com/2014/05/23/mavensmate-templates-and-apex-enterprise-patterns/)
+## Setup
+- Clone this repo
+- Copy the build.properties.template file into build.properties file and add your salesforce username and password.
+- Do `ant deploy` to get the classes in your dev org.
 
-Updates
-=======
+## Using ApexMocks on Force.com
 
-- **September 2014**, **IMPORTANT CHANGE**, changes applied to support Dreamforce 2014 advanced presentation, library now provides Application factories for major layers and support for ApexMocks. More details to follow! As a result [ApexMocks](https://github.com/financialforcedev/fflib-apex-mocks) must be deployed to the org before deploying this library. The sample application [here](https://github.com/financialforcedev/fflib-apex-common-samplecode) has also been updated to demonstrate the new features!
-- **July 2014**, **IMPORTANT CHANGE**, prior **23rd July 2014**, both the ``fflib_SObjectDomain.onValidate()`` and ``fflib_SObjectDomain.onValidate(Map<Id, SObject> existingRecords)`` methods where called during an on **after update** trigger event. From this point on the ``onValidate()`` method will only be called during on **after insert**. If you still require the orignal behaviour add the line ``Configuration.enableOldOnUpdateValidateBehaviour();`` into your constructor.
-- **June 2014**, New classes providing utilities to support security and dynamic queries, in addition to improvements to existing Apex Enterprise Pattern base classes. Read more [here](http://andyinthecloud.com/2014/06/28/financialforce-apex-common-updates/).
-- **June 2014**, Experimental [branch](https://github.com/financialforcedev/fflib-apex-common/tree/fls-support-experiment) supporting automated FLS checking, see [README](https://github.com/financialforcedev/fflib-apex-common/tree/fls-support-experiment#expirimental-crud-and-fls-support) for more details.
+ApexMocks allows you to write tests to both verify behaviour and stub dependencies.
 
-This Library
-============
+An assumption is made that you are using some form of [Dependency Injection](http://en.wikipedia.org/wiki/Dependency_injection) - for example passing dependencies via a constructor:
 
-Is derived from the **Dreamforce 2012** presentation on [Apex Enterprise Patterns](https://github.com/financialforcedev/df12-apex-enterprise-patterns) and progresses the patterns further with a more general ongoing home for them. It also adds some form of namespace qualification from the previous version. So that classes are grouped together more easily in the IDE's and packages. Below you can find comprehensive articles and videos on the use of these patterns. There is also a **working sample application** illustrating the patterns [here](https://github.com/financialforcedev/fflib-apex-common-samplecode).
+	public MyClass(ClassA.IClassA dependencyA, ClassB.IClassB dependencyB)
 
-![Alt text](/images/patternsturning.png "Optional title")
+This allows you to pass mock implementations of dependencies A and B when you want to unit test MyClass.
 
-Application Enterprise Patterns on Force.com
-============================================
+Lets assume we've written our own list interface fflib_MyList.IList that we want to either verify or stub:
 
-Design patterns are an invaluable tool for developers and architects looking to build enterprise solutions. Here are presented some tried and tested enterprise application engineering patterns that have been used in other platforms and languages. We will discuss and illustrate how patterns such as Data Mapper, Service Layer, Unit of Work and of course Model View Controller can be applied to Force.com. Applying these patterns can help manage governed resources (such as DML) better, encourage better separation-of-concerns in your logic and enforce Force.com coding best practices.
+	public class fflib_MyList implements IList
+	{
+		public interface IList
+		{
+			void add(String value);
+			String get(Integer index);
+			void clear();
+			Boolean isEmpty();
+		}
+	}
 
-Dreamforce Session and Slides
------------------------------
+### verify() behaviour verification
 
-- View slides for the **Dreamforce 2013** session [here](https://docs.google.com/file/d/0B6brfGow3cD8RVVYc1dCX2s0S1E/edit) 
-- Video recording of the **Dreamforce 2013** session [here](http://www.youtube.com/watch?v=qlq46AEAlLI).
-- Video recording of the **Advanced Apex Enterprise Dreamforce 2014** session [here](http://dreamforce.vidyard.com/watch/7QtP2628KmtXfmiwI-7B1w%20).
-- View slides for the **Dreamforce 2015** session [here](http://www.slideshare.net/andyinthecloud/building-strong-foundations-apex-enterprise-patterns)
+		// Given
+		fflib_ApexMocks mocks = new fflib_ApexMocks();
+		fflib_MyList.IList mockList = (fflib_MyList.IList)mocks.mock(fflib_MyList.class);
 
-Documentation
--------------
+		// When
+		mockList.add('bob');
 
-- [Apex Sharing and applying to Apex Enterprise Patterns](http://andyinthecloud.com/2016/01/10/apex-sharing-and-applying-to-apex-enterprise-patterns/)
-- [Tips for Migrating to Apex Enterprise Patterns](http://andyinthecloud.com/2015/09/30/tips-for-migrating-to-apex-enterprise-patterns/)
-- [Great Contributions to Apex Enterprise Patterns](http://andyinthecloud.com/2015/07/25/great-contributions-to-apex-enterprise-patterns/)
-- [Unit Testing, Apex Enterprise Patterns and ApexMocks – Part 1](http://andyinthecloud.com/2015/03/22/unit-testing-with-apex-enterprise-patterns-and-apexmocks-part-1/)
-- [Unit Testing, Apex Enterprise Patterns and ApexMocks – Part 2](http://andyinthecloud.com/2015/03/29/unit-testing-apex-enterprise-patterns-and-apexmocks-part-2/)
-- [Apex Enterprise Patterns - Separation of Concerns](http://wiki.developerforce.com/page/Apex_Enterprise_Patterns_-_Separation_of_Concerns)
-- [Apex Enterprise Patterns - Service Layer](http://wiki.developerforce.com/page/Apex_Enterprise_Patterns_-_Service_Layer)
-- [Apex Enterprise Patterns - Domain Layer](http://wiki.developerforce.com/page/Apex_Enterprise_Patterns_-_Domain_Layer)
-- [Apex Enterprise Patterns - Selector Layer](https://github.com/financialforcedev/df12-apex-enterprise-patterns#data-mapper-selector)
+		// Then
+		((fflib_MyList.IList) mocks.verify(mockList)).add('bob');
+		((fflib_MyList.IList) mocks.verify(mockList, fflib_ApexMocks.NEVER)).clear();
 
-**Other Related Blogs**
+### when() dependency stubbing
 
-- [Preview of Advanced Apex Patterns Session (Application Factory and ApexMocks Features)](http://andyinthecloud.com/2014/08/26/preview-of-advanced-apex-enterprise-patterns-session/)
-- [Unit Testing with the Domain Layer](http://andyinthecloud.com/2014/03/23/unit-testing-with-the-domain-layer/)
-- [MavensMate Templates](http://andyinthecloud.com/2014/05/23/mavensmate-templates-and-apex-enterprise-patterns/)
-- [FinancialForce Apex Common Updates](http://andyinthecloud.com/2014/06/28/financialforce-apex-common-updates/)
+		fflib_ApexMocks mocks = new fflib_ApexMocks();
+		fflib_MyList.IList mockList = (fflib_MyList.IList)mocks.mock(fflib_MyList.class);
 
+		mocks.startStubbing();
+		mocks.when(mockList.get(0)).thenReturn('bob');
+		mocks.when(mockList.get(1)).thenReturn('fred');
+		mocks.stopStubbing();
+
+## Stub API
+ApexMocks now implements the [Stub API](https://developer.salesforce.com/docs/atlas.en-us.apexcode.meta/apexcode/apex_testing_stub_api.htm)!
+
+Previously, stub objects had to be generated using the ApexMocks generator at compile time.
+Now, stub objects can be generated dynamically at run time.
+
+	fflib_ApexMocks mocks = new fflib_ApexMocks();
+	fflib_MyList mockList = (fflib_MyList)mocks.mock(fflib_MyList.class);
+
+You can continue to use the ApexMocks generator, if you wish, but this is no longer a prerequisite to using ApexMocks.
+
+## Generating Mock files
+
+Run the apex mocks generator from the command line.
+
+		java -jar apex-mocks-generator-4.0.0.jar
+			<Filepath to source files>
+			<Filepath to interface properties file>
+			<Name of generated mocks class>
+			<Filepath to target files - can be the same as filepath to source files>
+			<API version of generated mocks class - optional argument, 30.0 by default>
+
+		//E.g. the command used to generate the current version of fflib_Mocks.
+		java -jar apex-mocks-generator-4.0.0.jar "/Users/jbloggs/Dev/fflib-apex-mocks/src/classes" "/Users/jbloggs/Dev/fflib-apex-mocks/interfacemocks.properties" "fflib_Mocks" "/Users/jbloggs/Dev/fflib-apex-mocks/src/classes" "30.0"
+
+
+Instantiate the generated classes as follows:
+
+		fflib_ApexMocks mocks = new fflib_ApexMocks();
+		fflib_MyList.IList mockList = new MockMyList(mocks);
+
+## Documentation
+
+* [ApexMocks Framework Tutorial](http://code4cloud.wordpress.com/2014/05/06/apexmocks-framework-tutorial/)
+* [Simple Dependency Injection](http://code4cloud.wordpress.com/2014/05/09/simple-dependency-injection/)
+* [ApexMocks Generator](http://code4cloud.wordpress.com/2014/05/15/using-apex-mocks-generator-to-create-mock-class-definitions/)
+* [Behaviour Verification](http://code4cloud.wordpress.com/2014/05/15/writing-behaviour-verification-unit-tests/)
+* [Stubbing Dependencies](http://code4cloud.wordpress.com/2014/05/15/stubbing-dependencies-in-a-unit-test/)
+* [Supported Features](http://code4cloud.wordpress.com/2014/05/15/apexmocks-supported-features/)
+* [New Improved apex-mocks-generator](http://code4cloud.wordpress.com/2014/06/27/new-improved-apex-mocks-generator/)
+* [ApexMocks Improvements - exception stubbing, base classes and more](http://code4cloud.wordpress.com/2014/11/05/apexmocks-improvements-exception-stubbing-inner-interfaces-and-mock-base-classes/)
+* [Matchers](http://superdupercode.blogspot.co.uk/2016/03/apex-mocks-matchers.html)
+* [ApexMock blogs from Jesse Altman](http://jessealtman.com/tag/apexmocks/)
+* [Order of calls verification](https://xonoxforce.wordpress.com/2017/03/26/inorder-verify/)
+* [Answering](https://xonoxforce.wordpress.com/2017/03/31/answering-with-apex-mocks/)
+* [Counters](https://xonoxforce.wordpress.com/2017/04/01/counters-in-apex-mocks-verifications/)
