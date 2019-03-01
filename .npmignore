@@ -10,3 +10,7 @@ apex-mocks-generator-4.0.1.jar
 images
 interfacemocks.properties
 lib
+.sfdx
+.travis.yml
+fflib
+.vscode
