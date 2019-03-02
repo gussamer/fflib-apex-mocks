@@ -1,7 +1,7 @@
 {
-  "name": "fflib-apex-mocks",
+  "name": "npm-fflibx-mocks",
   "version": "1.0.0",
-  "description": "fflib apex mocks",
+  "description": "fflib apex mocks not official in any capacity",
   "scripts": {
     "pretest": "bash ./bin/setup",
     "test": "bash ./bin/test",
@@ -18,7 +18,7 @@
   "keywords": [
     "apex"
   ],
-  "author": "Andrew Fawcett",
+  "author": "Financialforce",
   "bugs": {
     "url": "https://github.com/gussamer/fflib-apex-mocks/issues"
   },
