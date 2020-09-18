@@ -1,16 +1,51 @@
-
-.project
-
-.settings/com.salesforce.ide.core.prefs
-
-salesforce.schema
-
+# General Project related
+.DS_Store
+target/
+temp/
+/deploy/*
+/debug/
+**/dep-dir.txt
+*.prefs
 build.properties
+/sfdx-source/apex-mocks/main/default
 
-.sfdx
+# MavensMate IDE related
+*mm.log
+*.sublime-build
+*.sublime-project
+*.sublime-settings
+*.sublime-workspace
+.sublime-project
+.tm_properties
 
-.vscode
+# Eclipse IDE Related
+.project
+.settings/
+salesforce.schema
+Referenced Packages/
 
-node_modules
+# VS Code IDE Related
+.vscode/
+.history/
 
+# Illuminated Cloud Related
+.idea/
+IlluminatedCloud
+
+# SFDX Related
+.sfdx/
+sfdx-source/untracked/
+.execanon
+
+# NPM Related
+package.json
+/node_modules
+package-lock.json
+
+
+sfdx-source/group*
+research/
 test_results
+
+# VSCODE
+.vscode
