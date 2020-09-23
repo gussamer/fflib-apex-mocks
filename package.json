@@ -30,6 +30,6 @@
     },
     "homepage": "https://github.com/gussamer/fflib-apex-mocks#readme",
     "dependencies": {
-        "qfpm": "^1.0.10"
+        "qfpm": "^1.0.12"
     }
 }
