@@ -1,26 +1,35 @@
 {
-  "name": "npm-fflib-mocks",
-  "version": "1.0.14",
-  "description": "fflib apex mocks not official in any capacity",
-  "scripts": {
-    "pretest": "bash ./bin/setup",
-    "test": "bash ./bin/test",
-    "posttest": "bash ./bin/clean",
-    "preinstall": "bash ./bin/preinstall",
-    "postinstall": "bash ./bin/postinstall",
-    "setup": "bash ./bin/setup",
-    "clean": "bash ./bin/clean"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/gussamer/fflib-apex-mocks.git"
-  },
-  "keywords": [
-    "apex"
-  ],
-  "author": "Not Me",
-  "bugs": {
-    "url": "https://github.com/gussamer/fflib-apex-mocks/issues"
-  },
-  "homepage": "https://github.com/gussamer/fflib-apex-mocks#readme"
+    "name": "npm-fflib-mocks",
+    "version": "1.0.15",
+    "description": "fflib apex mocks not official in any capacity",
+    "scripts": {
+        "pretest": "bash ./bin/setup",
+        "test": "bash ./bin/qfpm/test",
+        "posttest": "bash ./bin/clean",
+        "preinstall": "bash ./bin/qfpm/preinstall",
+        "postinstall": "bash ./bin/qfpm/postinstall",
+        "setup": "bash ./bin/qfpm/setup",
+        "clean": "bash ./bin/qfpm/clean",
+        "build": "bash ./bin/qfpm/build",
+        "deploy": "bash ./bin/qfpm/deploy",
+        "getprojectname": "bash ./bin/qfpm/getprojectname",
+        "isscratched": "bash ./bin/qfpm/isscratched",
+        "push": "bash ./bin/qfpm/push",
+        "scratch": "bash ./bin/qfpm/scratch"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/gussamer/fflib-apex-mocks.git"
+    },
+    "keywords": [
+        "apex"
+    ],
+    "author": "Not Me",
+    "bugs": {
+        "url": "https://github.com/gussamer/fflib-apex-mocks/issues"
+    },
+    "homepage": "https://github.com/gussamer/fflib-apex-mocks#readme",
+    "dependencies": {
+        "qfpm": "^1.0.10"
+    }
 }
