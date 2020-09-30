@@ -42,11 +42,9 @@ sfdx-source/untracked/
 
 package-lock.json
 
+bin/qfpm/
+
 
 sfdx-source/group*
 research/
 test_results
-
-# VSCODE
-.vscode
-bin/qfpm/
