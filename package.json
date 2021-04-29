@@ -1,7 +1,7 @@
 {
     "name": "npm-fflib-mocks",
-    "version": "1.0.18",
-    "description": "fflib apex mocks not official in any capacity",
+    "version": "1.0.19",
+    "description": "unofficial npm fflib apex mocks",
     "scripts": {
         "pretest": "bash ./bin/setup",
         "test": "bash ./bin/qfpm/test",
@@ -25,7 +25,8 @@
     "keywords": [
         "apex"
     ],
-    "author": "Not Me",
+    "license": "BSD-3-Clause",
+    "author": "https://github.com/apex-enterprise-patterns/fflib-apex-mocks/graphs/contributors",
     "bugs": {
         "url": "https://github.com/gussamer/fflib-apex-mocks/issues"
     },
