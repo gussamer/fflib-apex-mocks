@@ -1,6 +1,6 @@
 {
     "name": "npm-fflib-mocks",
-    "version": "1.0.19",
+    "version": "1.0.20",
     "description": "unofficial npm fflib apex mocks",
     "scripts": {
         "pretest": "bash ./bin/setup",
