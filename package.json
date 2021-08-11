@@ -16,7 +16,8 @@
         "isscratched": "bash ./bin/qfpm/isscratched",
         "push": "bash ./bin/qfpm/push",
         "scratch": "bash ./bin/qfpm/scratch",
-        "isqfpm": "bash ./bin/qfpm/isqfpm"
+        "isqfpm": "bash ./bin/qfpm/isqfpm",
+        "getsrcfolders": "bash ./bin/qfpm/getsrcfolders"
     },
     "repository": {
         "type": "git",
@@ -32,6 +33,6 @@
     },
     "homepage": "https://github.com/gussamer/fflib-apex-mocks#readme",
     "dependencies": {
-        "qfpm": "^1.0.17"
+        "qfpm": "^1.0.18"
     }
 }
