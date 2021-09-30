@@ -7,7 +7,9 @@
         "url": "git+https://github.com/gussamer/fflib-apex-mocks.git"
     },
     "keywords": [
-        "apex","sfdx","salesforce"
+        "apex",
+        "sfdx",
+        "salesforce"
     ],
     "license": "BSD-3-Clause",
     "author": "https://github.com/apex-enterprise-patterns/fflib-apex-mocks/graphs/contributors",
@@ -32,6 +34,6 @@
         "test": "bash ./bin/qfpm/test.sh"
     },
     "dependencies": {
-        "qfpm": "^1.0.21"
+        "qfpm": "^1.0.22"
     }
 }
