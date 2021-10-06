@@ -40,8 +40,6 @@ sfdx-source/untracked/
 # NPM Related
 /node_modules
 
-bin/qfpm/
-
 
 sfdx-source/group*
 research/
