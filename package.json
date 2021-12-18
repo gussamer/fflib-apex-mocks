@@ -1,7 +1,7 @@
 {
     "name": "npm-fflib-mocks",
     "version": "1.1.1",
-    "description": "unofficial npm fflib apex mocks",
+    "description": "the unofficial npm fflib apex mocks mirror",
     "repository": {
         "type": "git",
         "url": "git+https://github.com/gussamer/fflib-apex-mocks.git"
