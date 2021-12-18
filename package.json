@@ -31,7 +31,8 @@
         "removedepends": "qremovedepends",
         "scratch": "qscratch",
         "setup": "qsetup",
-        "test": "qtest"
+        "test": "qtest",
+        "updepends": "bash ./bin/update.sh"
     },
     "dependencies": {
         "qfpm": "^1.1.1"
